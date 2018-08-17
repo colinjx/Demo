@@ -9,10 +9,10 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>common</artifactId>
-    <packaging>jar</packaging>
+    <artifactId>cart</artifactId>
+    <packaging>war</packaging>
 
-    <name>common Maven Webapp</name>
+    <name>cart Maven Webapp</name>
     <!-- FIXME change it to the project's website -->
     <url>http://www.example.com</url>
 
@@ -32,7 +32,7 @@
     </dependencies>
 
     <build>
-        <finalName>common</finalName>
+        <finalName>cart</finalName>
         <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
             <plugins>
                 <plugin>

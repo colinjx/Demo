@@ -12,6 +12,7 @@
         <module>common</module>
         <module>goods</module>
         <module>customer</module>
+        <module>cart</module>
     </modules>
     <packaging>pom</packaging>
 
