@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.jx.customer.mapper.CustomerMapper">
+  <resultMap id="BaseResultMap" type="cn.jx.customer.entity.Customer">
+    <id column="uuid" jdbcType="INTEGER" property="uuid" />
+    <result column="customerId" jdbcType="VARCHAR" property="customerId" />
+    <result column="pwd" jdbcType="VARCHAR" property="pwd" />
+    <result column="showName" jdbcType="VARCHAR" property="showName" />
+    <result column="trueName" jdbcType="VARCHAR" property="trueName" />
+    <result column="registerTime" jdbcType="VARCHAR" property="registerTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    uuid, customerId, pwd, showName, trueName, registerTime
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from tbl_customer
+    where uuid = #{uuid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from tbl_customer
+    where uuid = #{uuid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.jx.customer.entity.Customer">
+    insert into tbl_customer (uuid, customerId, pwd, 
+      showName, trueName, registerTime
+      )
+    values (#{uuid,jdbcType=INTEGER}, #{customerId,jdbcType=VARCHAR}, #{pwd,jdbcType=VARCHAR}, 
+      #{showName,jdbcType=VARCHAR}, #{trueName,jdbcType=VARCHAR}, #{registerTime,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="cn.jx.customer.entity.Customer">
+    insert into tbl_customer
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="uuid != null">
+        uuid,
+      </if>
+      <if test="customerId != null">
+        customerId,
+      </if>
+      <if test="pwd != null">
+        pwd,
+      </if>
+      <if test="showName != null">
+        showName,
+      </if>
+      <if test="trueName != null">
+        trueName,
+      </if>
+      <if test="registerTime != null">
+        registerTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="uuid != null">
+        #{uuid,jdbcType=INTEGER},
+      </if>
+      <if test="customerId != null">
+        #{customerId,jdbcType=VARCHAR},
+      </if>
+      <if test="pwd != null">
+        #{pwd,jdbcType=VARCHAR},
+      </if>
+      <if test="showName != null">
+        #{showName,jdbcType=VARCHAR},
+      </if>
+      <if test="trueName != null">
+        #{trueName,jdbcType=VARCHAR},
+      </if>
+      <if test="registerTime != null">
+        #{registerTime,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.jx.customer.entity.Customer">
+    update tbl_customer
+    <set>
+      <if test="customerId != null">
+        customerId = #{customerId,jdbcType=VARCHAR},
+      </if>
+      <if test="pwd != null">
+        pwd = #{pwd,jdbcType=VARCHAR},
+      </if>
+      <if test="showName != null">
+        showName = #{showName,jdbcType=VARCHAR},
+      </if>
+      <if test="trueName != null">
+        trueName = #{trueName,jdbcType=VARCHAR},
+      </if>
+      <if test="registerTime != null">
+        registerTime = #{registerTime,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where uuid = #{uuid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.jx.customer.entity.Customer">
+    update tbl_customer
+    set customerId = #{customerId,jdbcType=VARCHAR},
+      pwd = #{pwd,jdbcType=VARCHAR},
+      showName = #{showName,jdbcType=VARCHAR},
+      trueName = #{trueName,jdbcType=VARCHAR},
+      registerTime = #{registerTime,jdbcType=VARCHAR}
+    where uuid = #{uuid,jdbcType=INTEGER}
+  </update>
+
+	<select id="getByConditionPage" resultType="cn.jx.customer.entity.Customer" parameterType="cn.jx.customer.entity.CustomerQueryModel">
+		select * from tbl_customer
+		<where>
+			<if test="uuid != null &amp;&amp; uuid > 0">
+				uuid = #{uuid,jdbcType=INTIGER}
+			</if>
+			<if test="customerId != null">
+				customerId = #{customerId,jdbcType=VARCHAR},
+			</if>
+			<if test="showName != null">
+				showName = #{showName,jdbcType=VARCHAR},
+			</if>
+
+		</where>
+	</select>
+</mapper>
