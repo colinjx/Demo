@@ -1,8 +1,6 @@
 package cn.jx.customer.entity;
 
 
-public class CustomerQueryModel extends CustomerEntity {
-
-
+public class CustomerQueryModel extends Customer {
 
 }

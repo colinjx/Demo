@@ -228,7 +228,17 @@
             <artifactId>moji</artifactId>
             <version>1.4.0</version>
         </dependency>
+
+
     </dependencies>
 
-
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.eclipse.jetty</groupId>
+                <artifactId>jetty-maven-plugin</artifactId>
+                <version>9.1.0.v20131115</version>
+            </plugin>
+        </plugins>
+    </build>
 </project>

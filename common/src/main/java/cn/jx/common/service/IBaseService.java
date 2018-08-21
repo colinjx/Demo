@@ -6,7 +6,7 @@ public interface IBaseService<M,QM> {
 
     void insert(M m);
 
-    void updateByPrimaryKey(Integer primaryKey);
+    void updateByPrimaryKey(M m);
 
     void deleteByPrimaryKey(Integer primaryKey);
 

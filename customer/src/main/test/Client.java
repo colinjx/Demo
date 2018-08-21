@@ -1,7 +1,7 @@
 import cn.jx.common.pageutil.Page;
-import cn.jx.customer.dao.CustomerDao;
-import cn.jx.customer.entity.CustomerEntity;
+import cn.jx.customer.entity.Customer;
 import cn.jx.customer.entity.CustomerQueryModel;
+import cn.jx.customer.mapper.CustomerMapper;
 import cn.jx.customer.servise.CustomerService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -20,25 +20,25 @@ public class Client {
     private CustomerService s ;
 
     @Autowired
-    private  CustomerDao dao ;
+    private CustomerMapper mapper ;
 
     @Test
 
     public void main() {
         ApplicationContext ctx = new ClassPathXmlApplicationContext("spring-mvc.xml");
 
-        CustomerEntity cm = new CustomerEntity();
-        cm.setCustomerid("c1");
+        Customer cm = new Customer();
+        cm.setCustomerId("c1");
         cm.setPwd("c1");
-        cm.setRegistertime("111");
-        cm.setShowname("colin");
+        cm.setRegisterTime("111");
+        cm.setShowName("colin");
 //        System.out.println(s);
-        s.setDao(dao);
+        s.setMapper(mapper);
         CustomerQueryModel cqm = new CustomerQueryModel();
         cqm.getPage().setNowPage(2);
         cqm.getPage().setPageShow(2);
 
-        Page<CustomerEntity> page= s.getByConditionPage(cqm);
+        Page<Customer> page= s.getByConditionPage(cqm);
         System.out.println(page);
     }
 }
