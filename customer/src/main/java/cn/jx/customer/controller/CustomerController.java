@@ -5,6 +5,7 @@ import cn.jx.common.util.format.DateFormatHelper;
 import cn.jx.common.util.json.JsonHelper;
 import cn.jx.customer.entity.Customer;
 import cn.jx.customer.entity.CustomerQueryModel;
+import cn.jx.customer.entity.CustomerWeb;
 import cn.jx.customer.servise.ICustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -23,29 +24,30 @@ public class CustomerController {
 	}
 
 	@RequestMapping(value = "/add",method = RequestMethod.POST)
-	public String add(@ModelAttribute("cm")Customer customer){
+	public String add(@ModelAttribute("customer")Customer customer){
 		customer.setRegisterTime(DateFormatHelper.longToStr(System.currentTimeMillis()));
 
 		ics.insert(customer);
 		return "customer/success";
 	}
 
-	@RequestMapping(value = "/toUpdate/(customerUuid)",method = RequestMethod.GET)
-	public String toUpdate(Model model, @PathVariable("uuid") int customerUuid){
-		model.addAttribute("cm",ics.getByPrimaryKey(customerUuid));
+	@RequestMapping(value = "/toUpdate/{customerUuid}",method = RequestMethod.GET)
+	public String toUpdate(Model model, @PathVariable("customerUuid") int customerUuid){
+
+		model.addAttribute("customer",ics.getByPrimaryKey(customerUuid));
 		return "customer/update";
 	}
 
 	@RequestMapping(value = "/update",method = RequestMethod.POST)
-	public String updated(@ModelAttribute("cm") Customer customer){
+	public String updated(@ModelAttribute("customer") Customer customer){
 		ics.updateByPrimaryKey(customer);
 
 		return "customer/success";
 	}
 
-	@RequestMapping(value = "/todelete/(customerUuid)",method = RequestMethod.GET)
-	public String toDelete(Model model, @PathVariable("uuid") int customerUuid){
-		model.addAttribute("cm",ics.getByPrimaryKey(customerUuid));
+	@RequestMapping(value = "/toDelete/{customerUuid}",method = RequestMethod.GET)
+	public String toDelete(Model model, @PathVariable("customerUuid") int customerUuid){
+		model.addAttribute("customer",ics.getByPrimaryKey(customerUuid));
 		return "customer/delete";
 	}
 
@@ -56,20 +58,32 @@ public class CustomerController {
 	}
 
 	@RequestMapping(value = "/toList",method = RequestMethod.GET)
-	public String toList(@RequestParam(value="queryJsonStr",defaultValue = "") String queryJson, @ModelAttribute("page") Page page, Model model){
+	public String toList(@ModelAttribute("customerWeb")CustomerWeb customerWeb, Model model){
 		CustomerQueryModel cqm = null;
-		if(queryJson == null || queryJson.trim().length()==0){
+
+		if(customerWeb.getQueryJsonStr()== null || customerWeb.getQueryJsonStr().trim().length()==0){
 			cqm = new CustomerQueryModel();
 		}else {
-			cqm= (CustomerQueryModel) JsonHelper.str2Object(queryJson,CustomerQueryModel.class);
+			cqm= (CustomerQueryModel) JsonHelper.str2Object(customerWeb.getQueryJsonStr(),CustomerQueryModel.class);
 		}
-		cqm.getPage().setNowPage(page.getNowPage());
+		cqm.getPage().setNowPage(customerWeb.getNowPage());
+		if(customerWeb.getPageShow() > 0){
+			cqm.getPage().setPageShow(customerWeb.getPageShow());
+		}
+
 		Page dbPage = ics.getByConditionPage(cqm);
-		model.addAttribute("queryJsonStr",queryJson);
+		model.addAttribute("customerWeb",customerWeb);
 		model.addAttribute("page",dbPage);
 
 
 		return "customer/list";
+	}
+
+
+	@RequestMapping(value = "/toQuery",method = RequestMethod.GET)
+	public String toQuery(){
+
+		return "customer/query";
 	}
 
 
