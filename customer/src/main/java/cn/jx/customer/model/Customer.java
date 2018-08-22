@@ -1,8 +1,8 @@
-package cn.jx.customer.entity;
+package cn.jx.customer.model;
 
-import cn.jx.common.Entity.BaseEntity;
+import cn.jx.common.model.Base;
 
-public class Customer extends BaseEntity{
+public class Customer extends Base {
     private Integer uuid;
 
     private String customerId;

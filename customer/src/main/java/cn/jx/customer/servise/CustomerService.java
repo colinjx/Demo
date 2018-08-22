@@ -2,8 +2,8 @@ package cn.jx.customer.servise;
 
 import cn.jx.common.service.BaseService;
 import cn.jx.customer.mapper.CustomerMapper;
-import cn.jx.customer.entity.Customer;
-import cn.jx.customer.entity.CustomerQueryModel;
+import cn.jx.customer.model.Customer;
+import cn.jx.customer.model.CustomerQueryModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

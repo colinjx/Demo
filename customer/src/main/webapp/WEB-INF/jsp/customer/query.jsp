@@ -17,28 +17,11 @@
 <script type="text/javascript">
     $().ready(function () {
         $("#btn_query").click(function () {
-            var customerId = $("#customerId").val();
-            if(customerId ==null || customerId==""){
-                customerId = "\"\"";
-            }
-            var pwd = $("#pwd").val() ;
-            if(pwd ==null || pwd =="") {
-                pwd = "\"\"";
-            }
-            var showName = $("#showName").val();
-            if(showName ==null || showName=="") {
-                showName = "\"\"";
-            }
-            var trueName = $("#trueName").val();
-            if(trueName ==null || trueName == "") {
-                trueName = "\"\"";
-            }
-
-            var json = '{"customerId":'+customerId+
-                ',"pwd":'+pwd+
-                ',"showName":'+showName+
-                ',"trueName":'+trueName+
-                '}';
+            var json = '{"customerId":"'+$("#customerId").val()+
+                '","pwd":"'+$("#pwd").val() +
+                '","showName":"'+$("#showName").val()+
+                '","trueName":"'+$("#trueName").val()+
+                '"}';
 
             window.location.href="${pageContext.request.contentType}/customer/toList?queryJsonStr="+json;
         })

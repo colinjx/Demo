@@ -1,12 +1,12 @@
 package cn.jx.common.service;
 
-import cn.jx.common.Entity.BaseEntity;
+import cn.jx.common.model.Base;
 import cn.jx.common.dao.BaseMapper;
 import cn.jx.common.pageutil.Page;
 
 import java.util.List;
 
-public class BaseService<M,QM extends BaseEntity >  implements IBaseService<M,QM>{
+public class BaseService<M,QM extends Base>  implements IBaseService<M,QM>{
 
     private BaseMapper mapper = null;
 

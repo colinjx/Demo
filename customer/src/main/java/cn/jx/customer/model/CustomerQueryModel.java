@@ -1,4 +1,4 @@
-package cn.jx.customer.entity;
+package cn.jx.customer.model;
 
 
 public class CustomerQueryModel extends Customer {

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cn.jx.customer.mapper.CustomerMapper">
-  <resultMap id="BaseResultMap" type="cn.jx.customer.entity.Customer">
+  <resultMap id="BaseResultMap" type="cn.jx.customer.model.Customer">
     <id column="uuid" jdbcType="INTEGER" property="uuid" />
     <result column="customerId" jdbcType="VARCHAR" property="customerId" />
     <result column="pwd" jdbcType="VARCHAR" property="pwd" />
@@ -22,7 +22,7 @@
     delete from tbl_customer
     where uuid = #{uuid,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="cn.jx.customer.entity.Customer">
+  <insert id="insert" parameterType="cn.jx.customer.model.Customer">
     insert into tbl_customer (uuid, customerId, pwd, 
       showName, trueName, registerTime
       )
@@ -30,7 +30,7 @@
       #{showName,jdbcType=VARCHAR}, #{trueName,jdbcType=VARCHAR}, #{registerTime,jdbcType=VARCHAR}
       )
   </insert>
-  <insert id="insertSelective" parameterType="cn.jx.customer.entity.Customer">
+  <insert id="insertSelective" parameterType="cn.jx.customer.model.Customer">
     insert into tbl_customer
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="uuid != null">
@@ -73,7 +73,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="cn.jx.customer.entity.Customer">
+  <update id="updateByPrimaryKeySelective" parameterType="cn.jx.customer.model.Customer">
     update tbl_customer
     <set>
       <if test="customerId != null">
@@ -94,7 +94,7 @@
     </set>
     where uuid = #{uuid,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="cn.jx.customer.entity.Customer">
+  <update id="updateByPrimaryKey" parameterType="cn.jx.customer.model.Customer">
     update tbl_customer
     set customerId = #{customerId,jdbcType=VARCHAR},
       pwd = #{pwd,jdbcType=VARCHAR},
@@ -104,18 +104,21 @@
     where uuid = #{uuid,jdbcType=INTEGER}
   </update>
 
-	<select id="getByConditionPage" resultType="cn.jx.customer.entity.Customer" parameterType="cn.jx.customer.entity.CustomerQueryModel">
+	<select id="getByConditionPage" resultType="cn.jx.customer.model.Customer" parameterType="cn.jx.customer.model.CustomerQueryModel">
 		select * from tbl_customer
 		<where>
 			<if test="uuid != null &amp;&amp; uuid > 0">
-				uuid = #{uuid,jdbcType=INTIGER}
+				and uuid = #{uuid,jdbcType=INTIGER}
 			</if>
-			<if test="customerId != null">
-				customerId = #{customerId,jdbcType=VARCHAR},
+			<if test="customerId != null &amp;&amp; customerId != '' ">
+				and customerId = #{customerId,jdbcType=VARCHAR}
 			</if>
-			<if test="showName != null">
-				showName = #{showName,jdbcType=VARCHAR},
+			<if test="showName != null &amp;&amp; showName != '' ">
+				and showName = #{showName,jdbcType=VARCHAR}
 			</if>
+            <if test="trueName != null &amp;&amp; trueName != '' ">
+                and trueName = #{trueName,jdbcType=VARCHAR}
+            </if>
 
 		</where>
 	</select>

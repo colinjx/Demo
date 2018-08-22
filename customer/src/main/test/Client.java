@@ -1,6 +1,6 @@
 import cn.jx.common.pageutil.Page;
-import cn.jx.customer.entity.Customer;
-import cn.jx.customer.entity.CustomerQueryModel;
+import cn.jx.customer.model.Customer;
+import cn.jx.customer.model.CustomerQueryModel;
 import cn.jx.customer.mapper.CustomerMapper;
 import cn.jx.customer.servise.CustomerService;
 import org.junit.Test;

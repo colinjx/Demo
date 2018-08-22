@@ -1,8 +1,8 @@
-package cn.jx.common.Entity;
+package cn.jx.common.model;
 
 import cn.jx.common.pageutil.Page;
 
-public class BaseEntity<M> {
+public class Base<M> {
     private Page<M> page= new Page<M>();
 
     public Page<M> getPage() {
