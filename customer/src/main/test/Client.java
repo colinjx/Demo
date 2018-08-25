@@ -1,7 +1,7 @@
 import cn.jx.common.pageutil.Page;
 import cn.jx.customer.model.Customer;
 import cn.jx.customer.model.CustomerQueryModel;
-import cn.jx.customer.mapper.CustomerMapper;
+import cn.jx.customer.dao.CustomerDao;
 import cn.jx.customer.servise.CustomerService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -20,7 +20,7 @@ public class Client {
     private CustomerService s ;
 
     @Autowired
-    private CustomerMapper mapper ;
+    private CustomerDao mapper ;
 
     @Test
 
@@ -33,7 +33,7 @@ public class Client {
         cm.setRegisterTime("111");
         cm.setShowName("colin");
 //        System.out.println(s);
-        s.setMapper(mapper);
+        s.setDao(mapper);
         CustomerQueryModel cqm = new CustomerQueryModel();
         cqm.getPage().setNowPage(2);
         cqm.getPage().setPageShow(2);

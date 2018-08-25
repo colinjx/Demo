@@ -1,45 +1,45 @@
 package cn.jx.common.service;
 
 import cn.jx.common.model.Base;
-import cn.jx.common.dao.BaseMapper;
+import cn.jx.common.dao.BaseDao;
 import cn.jx.common.pageutil.Page;
 
 import java.util.List;
 
 public class BaseService<M,QM extends Base>  implements IBaseService<M,QM>{
 
-    private BaseMapper mapper = null;
+    private BaseDao dao = null;
 
 
-    public void setMapper(BaseMapper mapper){
-        this.mapper = mapper;
+    public void setDao(BaseDao dao){
+        this.dao = dao;
     }
 
 
     @Override
     public void insert(M m) {
-        mapper.insert(m);
+        dao.insert(m);
     }
 
     @Override
     public void updateByPrimaryKey(M m) {
-        mapper.updateByPrimaryKey(m);
+        dao.updateByPrimaryKey(m);
     }
 
     @Override
     public void deleteByPrimaryKey(Integer primaryKey) {
-        mapper.deleteByPrimaryKey(primaryKey);
+        dao.deleteByPrimaryKey(primaryKey);
     }
 
     @Override
     public M getByPrimaryKey(Integer primaryKey) {
-        return (M) mapper.selectByPrimaryKey(primaryKey);
+        return (M) dao.selectByPrimaryKey(primaryKey);
     }
 
 
     @Override
     public Page<M> getByConditionPage(QM qm) {
-        List<M> list = mapper.getByConditionPage(qm);
+        List<M> list = dao.getByConditionPage(qm);
         qm.getPage().setResult(list);
         return qm.getPage();
     }

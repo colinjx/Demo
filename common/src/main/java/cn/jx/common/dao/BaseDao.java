@@ -2,7 +2,7 @@ package cn.jx.common.dao;
 
 import java.util.List;
 
-public interface BaseMapper<M,QM> {
+public interface BaseDao<M,QM> {
 
     int deleteByPrimaryKey(Integer uuid);
 
