@@ -1,6 +1,8 @@
 package cn.jx.common.model;
 
-public class BaseWeb {
+import java.io.Serializable;
+
+public class BaseWeb implements Serializable {
     private String queryJsonStr = "";
     private int nowPage = 1;
     private int PageShow = 0;

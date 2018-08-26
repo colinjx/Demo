@@ -10,6 +10,12 @@
         <fileset id="fileset2" name="Spring Mybatis" removed="false">
           <file>file://$MODULE_DIR$/src/main/resources/spring-mybatis.xml</file>
         </fileset>
+        <fileset id="fileset3" name="Spring Redis" removed="false">
+          <dependency>web mvc-dispatcher servlet context</dependency>
+          <file>file://$MODULE_DIR$/src/main/resources/spring-redis.xml</file>
+          <file>file://$MODULE_DIR$/src/main/resources/spring-mybatis.xml</file>
+          <file>file://$MODULE_DIR$/src/main/resources/spring-mvc.xml</file>
+        </fileset>
       </configuration>
     </facet>
     <facet type="web" name="Web">

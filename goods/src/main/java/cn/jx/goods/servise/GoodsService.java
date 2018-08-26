@@ -23,4 +23,5 @@ public class GoodsService extends BaseService<Goods,Goods> implements IGoodsServ
         super.setDao(dao);
     }
 
+
 }

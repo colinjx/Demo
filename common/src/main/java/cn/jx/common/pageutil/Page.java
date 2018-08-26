@@ -1,9 +1,10 @@
 package cn.jx.common.pageutil;
 
+import java.io.Serializable;
 import java.util.Collections;
 import java.util.List;
 
-public class Page<E> implements java.io.Serializable{
+public class Page<E> implements Serializable {
 	
 	private int pageShow = 2; 
 	private int totalPage;

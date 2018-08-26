@@ -9,7 +9,9 @@
     <result column="trueName" jdbcType="VARCHAR" property="trueName" />
     <result column="registerTime" jdbcType="VARCHAR" property="registerTime" />
   </resultMap>
-  <sql id="Base_Column_List">
+  <!--&lt;!&ndash; 引入自定义缓存类实现cache接口 &ndash;&gt;-->
+  <!--<cache type="cn.jx.common.util.redis.RedisCache"/>-->
+  <sql id="Base_Column_List">--
     uuid, customerId, pwd, showName, trueName, registerTime
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
@@ -122,4 +124,10 @@
 
 		</where>
 	</select>
+  <select id="getByCustomerId" resultType="cn.jx.customer.model.Customer">
+    select
+    <include refid="Base_Column_List" />
+    from tbl_customer
+    where customerId = #{customerId,jdbcType=INTEGER}
+  </select>
 </mapper>

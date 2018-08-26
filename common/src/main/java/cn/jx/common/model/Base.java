@@ -2,7 +2,9 @@ package cn.jx.common.model;
 
 import cn.jx.common.pageutil.Page;
 
-public class Base<M> {
+import java.io.Serializable;
+
+public class Base<M> implements Serializable {
     private Page<M> page= new Page<M>();
 
     public Page<M> getPage() {

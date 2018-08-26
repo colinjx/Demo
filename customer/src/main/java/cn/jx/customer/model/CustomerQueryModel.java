@@ -1,6 +1,8 @@
 package cn.jx.customer.model;
 
 
-public class CustomerQueryModel extends Customer {
+import java.io.Serializable;
+
+public class CustomerQueryModel extends Customer implements Serializable {
 
 }

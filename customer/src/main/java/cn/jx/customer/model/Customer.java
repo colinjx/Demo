@@ -2,7 +2,9 @@ package cn.jx.customer.model;
 
 import cn.jx.common.model.Base;
 
-public class Customer extends Base {
+import java.io.Serializable;
+
+public class Customer extends Base implements Serializable {
     private Integer uuid;
 
     private String customerId;
