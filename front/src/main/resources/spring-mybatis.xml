@@ -10,7 +10,7 @@
 			http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
 			http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd">
     <!-- 自动扫描 -->
-    <context:component-scan base-package="cn.jx.customer">
+    <context:component-scan base-package="cn.jx">
         <!--排除掉Controller注解-->
         <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
     </context:component-scan>
@@ -55,9 +55,9 @@
 
     <!-- DAO接口所在包名，Spring会自动查找其下的类-->
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-        <property name="basePackage" value="cn.jx.customer.dao"/>
+        <property name="basePackage" value="cn.jx"/>
         <!--扫描该注解的dao-->
-        <!--<property name="annotationClass" value="org.springframework.stereotype.Repository"/>-->
+        <property name="annotationClass" value="org.springframework.stereotype.Repository"/>
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
     </bean>
 

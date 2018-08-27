@@ -12,7 +12,7 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
 
 @Controller
-@RequestMapping("/f")
+@RequestMapping("/")
 public class LoginController {
 	@Autowired
 	private ICustomerService ics = null;
@@ -22,7 +22,10 @@ public class LoginController {
 		return "login";
 	}
 
-
+	@RequestMapping(value="/",method=RequestMethod.GET)
+	public String index(){
+		return "login";
+	}
 
 	@RequestMapping(value="/login",method=RequestMethod.POST)
 	public String login(@RequestParam("customerId")String customerId

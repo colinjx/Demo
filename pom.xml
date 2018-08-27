@@ -15,7 +15,7 @@
         <module>cart</module>
         <module>order</module>
         <module>store</module>
-        <module>fromt</module>
+        <module>front</module>
     </modules>
     <packaging>pom</packaging>
     <properties>

@@ -10,7 +10,7 @@
                         http://www.springframework.org/schema/mvc
                         http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">
 	<!-- 自动扫描该包，使SpringMVC认为包下用了@controller注解的类是控制器 -->
-	<context:component-scan base-package="cn.jx.customer.controller" >
+	<context:component-scan base-package="cn.jx" >
 		<!--扫描Controller注解-->
 		<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
 	</context:component-scan>
@@ -22,7 +22,6 @@
 	<mvc:default-servlet-handler/>
 	<!--<mvc:resources mapping="/static/**" location="/WEB-INF/static"/>-->
     <mvc:resources location="/WEB-INF/static/js/" mapping="/static/js/**"/>
-    <mvc:resources location="/WEB-INF/static/img/" mapping="/static/img/**"/>
     <mvc:resources location="/WEB-INF/static/css/" mapping="/static/css/**"/>
 
 	<!-- 定义跳转的文件的前后缀 ，视图模式配置-->
